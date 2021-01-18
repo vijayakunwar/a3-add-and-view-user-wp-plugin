@@ -1,65 +1,130 @@
 <?php
+
 /**
- * Plugin Name: simple customizer and widget
- * Version: 0.1
- * Author: Vijaya Kunwar
- * License: GPL2+
+ * Plugin Name: custom color
+ */
+
+
+
+
+/**
+ * Theme Customization API
+ * //https://codex.wordpress.org/Theme_Customization_API
  *
  */
 
-add_action( 'admin_enqueue_scripts', 'mytheme_backend_scripts');
-
-if ( ! function_exists( 'mytheme_backend_scripts' ) ){
-    function mytheme_backend_scripts($hook) {
-        wp_enqueue_media();
-        wp_enqueue_style( 'wp-color-picker');
-        wp_enqueue_script( 'wp-color-picker');
-    }
+if ( ! defined( 'ABSPATH' ) ){
+    die();
 }
 
-add_action( 'add_meta_boxes', 'mytheme_add_meta_box' );
 
-if ( ! function_exists( 'mytheme_add_meta_box' ) ){
-    function mytheme_add_meta_box(){
-        add_meta_box( 'header-page-metabox-options', esc_html__('Header Color', 'mytheme' ), 'mytheme_header_meta_box', 'page', 'side', 'low');
-    }
+/**
+ * Custom color for HTML ELEMENTS
+ */
+
+/**
+ * Any new Theme Customizer settings, sections, or controls
+ * must be defined from within a customize_register action.
+ * This action automatically loads the $wp_customize object,
+ * which is an instance of the WP_Customize_Manager class.
+ */
+
+function learningWordPress_custom_register($wp_customize){
+    //$wp_customize->add_setting( 'header_textcolor' , array(
+    //https://developer.wordpress.org/reference/functions/header_textcolor/
+
+    //setting  -> lwp_link_color  [to get color from database]
+    //setting for link
+    $wp_customize->add_setting( 'lwp_link_color' , array(
+        'default'   => '#006ec3',
+        'transport' => 'refresh',
+    ) );
+    //setting for button
+    $wp_customize->add_setting('lwp_btn_color', array(
+        'default' => '#006ec3',
+        'transport' => 'refresh',
+    ));
+    //section name
+    $wp_customize->add_section('lwp_standard_colors', array(
+        // --( ) --> localisation
+        'title' => __('Standard Colors', 'Twenty Twenty-One'), // theme name
+        'priority' => 30,
+    ));
+
+    //control for
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_link_color_control', array(
+        'label' => __('Link Color', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_link_color', // setting that we created for link as above
+    ) ) );
+
+    //control for button
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_btn_color_control', array(
+        'label' => __('Button Color', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_btn_color', // setting that we created for button as above
+    ) ) );
 }
+add_action('customize_register','learningWordPress_custom_register');
 
-if ( ! function_exists( 'mytheme_header_meta_box' ) ){
-    function mytheme_header_meta_box( $post ){
-        $custom = get_post_custom( $post->ID );
-        $header_color = (isset($custom["header_color"][0])) ? $custom["header_color"][0] : '';
-        wp_nonce_field( 'mytheme_header_meta_box', 'mytheme_header_meta_box_nonce' );
-        ?>
-        <script>
-            jQuery(document).ready(function($){
-                $('.color_field').each(function(){
-                    $(this).wpColorPicker();
-                });
-            });
-        </script>
-        <div class="pagebox">
-            <p><?php esc_attr_e('Choosse a color for your post header.', 'mytheme' ); ?></p>
-            <input class="color_field" type="hidden" name="header_color" value="<?php esc_attr_e($header_color); ?>"/>
-        </div>
-        <?php
-    }
-}
 
-if ( ! function_exists( 'mytheme_save_header_meta_box' ) ){
-    function mytheme_save_header_meta_box( $post_id ){
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-            return;
+
+// Output Customize CSS
+function learningWordPress_customize_css() { ?>
+
+    <style type="text/css">
+
+        a:link,
+        a:visited {
+            color: <?php echo get_theme_mod('lwp_link_color'); ?>;
         }
-        if( !current_user_can( 'edit_pages' ) ) {
-            return;
+
+        a.wp-block-button__link {
+            background-color: <?php echo get_theme_mod('lwp_btn_color'); ?> !important;
         }
-        if ( !isset( $_POST['header_color'] ) || !wp_verify_nonce( $_POST['mytheme_header_meta_box_nonce'], 'mytheme_header_meta_box' ) ) {
-            return;
-        }
-        $header_color = (isset($_POST["header_color"]) && $_POST["header_color"]!='') ? $_POST["header_color"] : '';
-        update_post_meta($post_id, "header_color", $header_color);
-    }
+
+    </style>
+
+<?php }
+
+add_action('wp_head', 'learningWordPress_customize_css');
+
+
+/**
+ * Admin login page customization
+ */
+
+add_action('login_header','hello_world');
+function hello_world(){
+    echo 'Hello World';
 }
 
-add_action( 'save_post', 'mytheme_save_header_meta_box' );
+add_filter('login_headerurl','change_header_url');
+function change_header_url(){
+    return 'https://vijayakunwar.github.io';
+}
+
+add_action( 'login_enqueue_scripts', 'cwpl_login_stylesheet' );
+/**
+ * Load custom stylesheet on login page.
+ */
+function cwpl_login_stylesheet() {
+    wp_enqueue_style( 'cwpl-custom-stylsheet', plugin_dir_url(__FILE__) . 'login-styles.css' );
+}
+
+add_filter( 'login_errors', 'cwpl_error_message');
+/**
+ * Returns a custom login error message.
+ */
+function cwpl_error_message() {
+    return 'Well, that was not it!';
+}
+
+add_action( 'login_footer', 'cwpl_remove_shake');
+/**
+ * Remove login page shake.
+ */
+function cwpl_remove_shake() {
+    //remove_action( 'login_head', 'wp_shake_js', 12 );
+    remove_action( 'login_footer', 'wp_shake_js', 12 );
+}
