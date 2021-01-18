@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: custom color
+ * Plugin Name: A3 custom color
  */
 
 
@@ -34,24 +34,49 @@ function learningWordPress_custom_register($wp_customize){
     //https://developer.wordpress.org/reference/functions/header_textcolor/
 
     //setting  -> lwp_link_color  [to get color from database]
+
     //setting for link
     $wp_customize->add_setting( 'lwp_link_color' , array(
-        'default'   => '#006ec3',
+        'default'   => '',
         'transport' => 'refresh',
     ) );
     //setting for button
     $wp_customize->add_setting('lwp_btn_color', array(
-        'default' => '#006ec3',
+        'default' => '',
         'transport' => 'refresh',
     ));
+
+    //setting for article section
+    $wp_customize->add_setting( 'lwp_article_color' , array(
+        'default'   => '',  // gives default and clear option
+        'transport' => 'refresh',
+    ) );
+
+    //setting for header section
+    $wp_customize->add_setting( 'lwp_header_color' , array(
+        'default'   => '',  // gives default and clear option
+        'transport' => 'refresh',
+    ) );
+    //setting for body section
+    $wp_customize->add_setting( 'lwp_body_color' , array(
+        'default'   => '',  // gives default and clear option
+        'transport' => 'refresh',
+    ) );
+    //setting for footer section
+    $wp_customize->add_setting( 'lwp_footer_color' , array(
+        'default'   => '',  // gives default and clear option
+        'transport' => 'refresh',
+    ) );
+
+
     //section name
     $wp_customize->add_section('lwp_standard_colors', array(
         // --( ) --> localisation
-        'title' => __('Standard Colors', 'Twenty Twenty-One'), // theme name
+        'title' => __('Custom Element color', 'Twenty Twenty-One'), // theme name
         'priority' => 30,
     ));
 
-    //control for
+    //control for Link
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_link_color_control', array(
         'label' => __('Link Color', 'Twenty Twenty-One'),
         'section' => 'lwp_standard_colors',
@@ -64,11 +89,39 @@ function learningWordPress_custom_register($wp_customize){
         'section' => 'lwp_standard_colors',
         'settings' => 'lwp_btn_color', // setting that we created for button as above
     ) ) );
+
+    //control for article section
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_article_control', array(
+        'label' => __('Section', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_article_color', // setting that we created for admin_page
+    ) ) );
+
+    //control for header section
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_header_control', array(
+        'label' => __('Header', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_header_color', // setting that we created for admin_page
+    ) ) );
+
+    //control for body section
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_body_control', array(
+        'label' => __('Body', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_body_color', // setting that we created for admin_page
+    ) ) );
+
+    //control for footer section
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lwp_footer_control', array(
+        'label' => __('Footer', 'Twenty Twenty-One'),
+        'section' => 'lwp_standard_colors',
+        'settings' => 'lwp_footer_color', // setting that we created for admin_page
+    ) ) );
 }
 add_action('customize_register','learningWordPress_custom_register');
 
 
-
+//get_theme_mod()  --> https://developer.wordpress.org/reference/functions/get_theme_mod/
 // Output Customize CSS
 function learningWordPress_customize_css() { ?>
 
@@ -82,13 +135,26 @@ function learningWordPress_customize_css() { ?>
         a.wp-block-button__link {
             background-color: <?php echo get_theme_mod('lwp_btn_color'); ?> !important;
         }
-
+        article {
+            background-color: <?php echo get_theme_mod('lwp_article_color'); ?>;
+        }
+        header#site-header {
+            background-color: <?php echo get_theme_mod('lwp_header_color')?>;
+            width: 100%;
+        }
+        body{
+            background-color: <?php echo get_theme_mod('lwp_body_color')?>;
+        }
+        footer#site-footer{
+            background-color: <?php echo get_theme_mod('lwp_footer_color')?>;
+        }
     </style>
 
 <?php }
 
 add_action('wp_head', 'learningWordPress_customize_css');
 
+//---------------------------------------------------------------------------------------------------//
 
 /**
  * Admin login page customization
@@ -109,7 +175,7 @@ add_action( 'login_enqueue_scripts', 'cwpl_login_stylesheet' );
  * Load custom stylesheet on login page.
  */
 function cwpl_login_stylesheet() {
-    wp_enqueue_style( 'cwpl-custom-stylsheet', plugin_dir_url(__FILE__) . 'login-styles.css' );
+    wp_enqueue_style( 'cwpl-custom-stylsheet', plugin_dir_url(__FILE__) . 'login-style.css' );
 }
 
 add_filter( 'login_errors', 'cwpl_error_message');
@@ -127,4 +193,52 @@ add_action( 'login_footer', 'cwpl_remove_shake');
 function cwpl_remove_shake() {
     //remove_action( 'login_head', 'wp_shake_js', 12 );
     remove_action( 'login_footer', 'wp_shake_js', 12 );
+}
+
+
+//-----------------------------------------------------------------------------------------------------
+/**
+ * SPCP sidebar
+ */
+
+add_action( 'wp_enqueue_scripts', 'spcp_login_stylesheet' );
+/**
+ * Load plugin styles.
+ */
+function spcp_login_stylesheet() {
+
+    if ( apply_filters( 'spcp_load_styles', true ) ) {
+        wp_enqueue_style( 'spcp-custom-stylsheet', plugin_dir_url(__FILE__) . 'spcp-styles.css' );
+    }
+}
+
+// Uncomment the following line to keep spcp-custom-stylesheet from loading
+// add_filter( 'spcp_load_styles', '__return_false' );
+
+add_action( 'widgets_init', 'spcp_register_sidebar');
+/**
+ * Registers a sidebar called Post Content Plus.
+ */
+function spcp_register_sidebar() {
+
+    register_sidebar( array(
+        'name'			=> __( 'Post Content Plus', 'spcp'),
+        'id'			=> 'spcp-sidebar',
+        'description' 	=> __( 'Widgets in this area display on single posts', 'spcp' ),
+        'before_widget'	=> '<div class="widget spcp-sidebar">',
+        'after_widget'	=> '</div>',
+        'before_title'	=> '<h2 class="widgettitle spcp-title">',
+        'after_title'	=> '</h2>',
+    ) );
+
+}
+
+add_filter( 'the_content', 'spcp_display_sidebars' );
+function spcp_display_sidebars( $content ) {
+
+    if ( is_single() && is_active_sidebar( 'spcp-sidebar' ) && is_main_query()  ) {
+        dynamic_sidebar( 'spcp-sidebar' );
+    }
+
+    return $content;
 }
