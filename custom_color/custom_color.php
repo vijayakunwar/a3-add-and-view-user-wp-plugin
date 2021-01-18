@@ -1,8 +1,20 @@
 <?php
+
+// exit if file is called directly
+if ( ! defined( 'ABSPATH' ) ) {
+
+    exit;
+
+}
+
 /**
  * Custom color for HTML ELEMENTS
  */
-
+/**
+ * Theme Customization API
+ * //https://codex.wordpress.org/Theme_Customization_API
+ *
+ */
 /**
  * Any new Theme Customizer settings, sections, or controls
  * must be defined from within a customize_register action.

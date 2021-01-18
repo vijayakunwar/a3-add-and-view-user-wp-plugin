@@ -1,17 +1,16 @@
 <?php
 
 /**
- * Plugin Name: A3 custom color
+ * Plugin Name:       A3 Custom plugin
+ * Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer-and-widget
+ * Description:       Provide customize color and add widget to single post.
+ * Version:           0.1
+ * Requires at least: 5.2
+ * Requires PHP:      7.2
+ * Author:            Vijaya Kunwar
+ * Author URI:        https://vijayakunwar.github.io/
  */
 
-
-
-
-/**
- * Theme Customization API
- * //https://codex.wordpress.org/Theme_Customization_API
- *
- */
 
 // If this file is called directly, abort
 if ( ! defined( 'ABSPATH' ) ){
