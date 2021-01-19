@@ -46,6 +46,7 @@ add_filter( 'login_headertitle', 'myplugin_custom_login_title' );
 
 
 
+
 // custom login styles
 function myplugin_custom_login_styles() {
 
@@ -197,3 +198,4 @@ add_filter( 'login_errors', 'cwpl_error_message');
 function cwpl_error_message() {
     return 'Well, that was not it!';
 }
+

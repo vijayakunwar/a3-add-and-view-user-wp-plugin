@@ -23,6 +23,7 @@ function myplugin_register_settings() {
 
     */
 
+
     register_setting(
         'myplugin_options',
         'myplugin_options',
@@ -84,6 +85,26 @@ function myplugin_register_settings() {
         'myplugin_section_login',
         [ 'id' => 'custom_title', 'label' => 'Custom title attribute for the logo link' ]
     );
+
+  /*  //---------------------------------------------------
+    register_setting(
+        "myplugin_options",
+        "myplugin_options",
+        "handle_logo_upload");
+
+
+
+    //----------------------------------------------------
+    add_settings_field(
+        'custom_admin_logo',
+        'Admin login Logo',
+        'myplugin_callback_field_text',
+        'myplugin',
+        'myplugin_section_login',
+        ['id'=>'custom_admin_logo','label'=>' Logo image shown in login page']
+    );
+    //----------------------------------------------------
+*/
 
     add_settings_field(
         'custom_style',

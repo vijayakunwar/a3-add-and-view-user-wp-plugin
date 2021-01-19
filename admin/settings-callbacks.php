@@ -10,18 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-
-// callback: validate options
-function myplugin_callback_validate_options( $input ) {
-
-    // todo: add callback functionality..
-
-    return $input;
-
-}
-
-
-
 // callback: login section
 function myplugin_callback_section_login() {
 

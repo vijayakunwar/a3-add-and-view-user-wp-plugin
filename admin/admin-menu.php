@@ -24,7 +24,7 @@ function myplugin_add_sublevel_menu() {
 
     */
 
- /*
+/*
     add_submenu_page(
         'options-general.php',
         'MyPlugin Settings',
@@ -33,8 +33,18 @@ function myplugin_add_sublevel_menu() {
         'myplugin',
         'myplugin_display_settings_page'
     );
- */
 
+*/
+    /*
+    add_submenu_page(
+        'myplugin',
+        'MyPlugin Settings',
+        'submenu',
+        'manage_options',
+        'submenu',
+        'my_theme_settings_page'
+    );
+*/
 }
 //add_action( 'admin_menu', 'myplugin_add_sublevel_menu' );
 

@@ -1,9 +1,12 @@
 /* MyPlugin - Custom Login Styles */
 
-body.login { background-color: yellow; }
+body.login { background-color: mediumpurple; }
+
 body.login div#login form#loginform { border-radius: 50px; }
 body.login .custom-message { text-align: center; }
+
 
 body.login div#login h1 a {
     background-image: url("../../img/profile.png");
 }
+

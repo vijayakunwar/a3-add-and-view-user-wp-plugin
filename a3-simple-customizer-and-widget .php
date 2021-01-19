@@ -22,15 +22,22 @@ require_once plugin_dir_path(__FILE__).'custom_color/custom_color.php';
 
 require_once plugin_dir_path(__FILE__).'custom_post_widget/custom_post_widget.php';
 
+
+
 if (is_admin()){
     require_once plugin_dir_path(__FILE__).'admin/admin-menu.php';
     require_once plugin_dir_path(__FILE__).'admin/settings-page.php';
     require_once plugin_dir_path(__FILE__).'admin/settings-register.php';
     require_once plugin_dir_path(__FILE__).'admin/settings-callbacks.php';
 
+
+
+
 }
 
 require_once plugin_dir_path(__FILE__).'includes/core-functions.php';
+
+require_once plugin_dir_path(__FILE__).'admin/custom-admin-logo.php';
 
 // default plugin options
 function myplugin_options_default() {
