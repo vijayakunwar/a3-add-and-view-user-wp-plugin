@@ -24,6 +24,7 @@ function myplugin_add_sublevel_menu() {
 
     */
 
+ /*
     add_submenu_page(
         'options-general.php',
         'MyPlugin Settings',
@@ -32,6 +33,7 @@ function myplugin_add_sublevel_menu() {
         'myplugin',
         'myplugin_display_settings_page'
     );
+ */
 
 }
 //add_action( 'admin_menu', 'myplugin_add_sublevel_menu' );
@@ -59,10 +61,10 @@ function myplugin_add_toplevel_menu() {
         'MyPlugin Settings',
         'MyPlugin',
         'manage_options',
-        'myplugin',
-        'myplugin_display_settings_page',
+        'myplugin',   //used in the URL for plugin page  - easy to use name of plugin
+        'myplugin_display_settings_page', // function used to display page output
         'dashicons-admin-generic',
-        null
+        null  // menu item placing order; if 1 -> stays top, but it is recommend to use null to stay safe from conflict with other plugins
     );
 
 }
