@@ -1,4 +1,4 @@
-Theme Details
+Plugin Details
 
     Plugin Name:       A3 Simple Customizer
     Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer
