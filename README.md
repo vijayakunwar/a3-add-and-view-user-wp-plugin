@@ -99,9 +99,15 @@ Frequently Asked Questions
 
 
 Screenshots
-Login page setting
-Login image setting
-Custom Element color
-Custom post widget for single post 
+
+    Login page setting
+        [GitHub](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image1.png)
+    Login image setting
+        [GitHub](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image2.png)
+    Custom Element color
+        [GitHub](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image3.png)
+    Custom post widget for single post
+        [GitHub](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image4.png)
+        [GitHub](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image5.png) 
     
 
