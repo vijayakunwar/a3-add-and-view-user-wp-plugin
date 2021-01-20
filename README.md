@@ -60,20 +60,20 @@ What Plugin does? / Why the plugin is useful?
     that can act as notice to post reader.
 
 How user can get started with the plugin?
-    User just need to follow the instruction to add new plugin
-    To upload:
-        1: Find add new plugin ni Plugin/Add New menu page in admin menu
-        2: Upload the zipped plugin folder using Upload Plugin button
-        3: Activate the plugin
-    To access Custom Login page features
-        1: Login page setting main menu is shown in admin menu once plugin installed sucessfully
-        2: It has subpage menu page setting and logo setting
-    To access custom color customizer
-        1: It is placed in Appearance/Customize menu as  Custom Element color sub menu
-    To access custom post content
-        1: once the plugin is activated, Post Content for single post Metabox is shown
-            where we can place available widget such as image, text or video.
-        2: Drag and drop needed widget to metabox, save and check one post to see it in effect
+User just need to follow the instruction to add new plugin
+To upload:
+    1: Find add new plugin ni Plugin/Add New menu page in admin menu
+    2: Upload the zipped plugin folder using Upload Plugin button
+    3: Activate the plugin
+To access Custom Login page features
+    1: Login page setting main menu is shown in admin menu once plugin installed sucessfully
+    2: It has subpage menu page setting and logo setting
+To access custom color customizer
+    1: It is placed in Appearance/Customize menu as  Custom Element color sub menu
+To access custom post content
+    1: once the plugin is activated, Post Content for single post Metabox is shown
+        where we can place available widget such as image, text or video.
+    2: Drag and drop needed widget to metabox, save and check one post to see it in effect
 
 
 Where user can get help with plugin issues?
