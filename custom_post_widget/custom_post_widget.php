@@ -24,7 +24,7 @@ add_action( 'widgets_init', 'spcp_register_sidebar');
 function spcp_register_sidebar() {
 
     register_sidebar( array(
-        'name'			=> __( 'Post Content Plus', 'spcp'),
+        'name'			=> __( 'Post Content for single post', 'spcp'),
         'id'			=> 'spcp-sidebar',
         'description' 	=> __( 'Widgets in this area display on single posts', 'spcp' ),
         'before_widget'	=> '<div class="widget spcp-sidebar">',
