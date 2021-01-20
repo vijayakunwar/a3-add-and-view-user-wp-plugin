@@ -102,20 +102,17 @@ Screenshots
 
     Login page setting
     
-        ![Login page setting](image1.png)
-        
+        ![Login page setting](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image1.png)
     Login image setting
     
-        ![Login image setting](image2.png)
-        
+        ![Login image setting](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image2.png)
     Custom Element color
     
-        ![Custom Element color](image3.png)
-        
+        ![Custom Element color](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image3.png)
     Custom post widget for single post
     
-        ![Custom post widget for single post](image4.png)
+        ![Custom post widget for single post](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image4.png)
         
-        ![Custom post widget for single post](image5.png) 
+        ![Custom post widget for single post](https://github.com/vijayakunwar/a3-simple-customizer/blob/main/img/image5.png) 
     
 
