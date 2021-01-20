@@ -16,13 +16,26 @@ add_action( 'admin_init', 'register_custom_logo_settings' );
 
 
 function register_login_logo_setting_page() {
-    add_options_page(
+  /*  add_options_page(
             'Login Logo',
             'Login Logo',
             'manage_options',
             'change-login-logo',
             'change_wordpress_login_logo');
+  */
+
+    add_submenu_page(
+        'myplugin',
+        'Login Logo',
+        'submenu',
+        'manage_options',
+        'submenu',
+        'change_wordpress_login_logo'
+    );
+
 }
+
+
 add_action('admin_menu', 'register_login_logo_setting_page');
 
 function change_wordpress_login_logo()
