@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name:       A3 Custom plugin
- * Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer-and-widget
+ * Plugin Name:       A3 Simple Customizer
+ * Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer
  * Description:       Provide customize color and add widget to single post.
  * Version:           0.1
  * Requires at least: 5.2
