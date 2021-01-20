@@ -26,10 +26,20 @@ function register_login_logo_setting_page() {
 
     add_submenu_page(
         'myplugin',
-        'Login Logo',
-        'submenu',
+        'Login Page Setting',
+        'Page settings',
         'manage_options',
-        'submenu',
+        'myplugin',
+        //missing function but works fine
+        // this menu parameter is overriden to main menu page
+    );
+
+    add_submenu_page(
+        'myplugin',
+        'Login Logo',
+        'Image Setting',
+        'manage_options',
+        'loginlogo',
         'change_wordpress_login_logo'
     );
 

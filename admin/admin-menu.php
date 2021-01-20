@@ -68,8 +68,9 @@ function myplugin_add_toplevel_menu() {
     */
 
     add_menu_page(
-        'MyPlugin Settings',
-        'MyPlugin',
+
+        'Login Page Settings',
+        'Login Page Setting',
         'manage_options',
         'myplugin',   //used in the URL for plugin page  - easy to use name of plugin
         'myplugin_display_settings_page', // function used to display page output
