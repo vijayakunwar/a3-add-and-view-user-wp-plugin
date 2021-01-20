@@ -1,13 +1,13 @@
-Plugin Name:       A3 Simple Customizer
-Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer
-Description:       Provide customize color and add widget to single post.
-Version:           0.1
-Requires at least: 5.2
-Requires PHP:      7.2
-Author:            Vijaya Kunwar
-Author URI:        https://vijayakunwar.github.io/
-License:           GPLv2 or later
-License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+*Plugin Name:       A3 Simple Customizer
+*Plugin URI:        https://github.com/vijayakunwar/a3-simple-customizer
+*Description:       Provide customize color and add widget to single post.
+*Version:           0.1
+*Requires at least: 5.2
+*Requires PHP:      7.2
+*Author:            Vijaya Kunwar
+*Author URI:        https://vijayakunwar.github.io/
+*License:           GPLv2 or later
+*License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 == Plugin Description ==
 Plugin a3-simple-customizer is a simple plugin where admin user can
